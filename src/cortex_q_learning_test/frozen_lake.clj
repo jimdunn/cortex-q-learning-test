@@ -108,19 +108,6 @@
                    (conj episode-steps steps)
                    (if goal? (inc successes) successes))))))))
 
-(defn mean [xs] (/ (reduce + xs) (count xs)))
-(defn centered-moving-average
-  [xs n]
-  {:post [(= (count xs) (count %))]}
-  (let [m (quot n 2)
-        pad (repeat m nil)
-        ys (map mean (partition n 1 xs))
-        zs (if (odd? n)
-             ys
-             (map mean (partition 2 1 ys)))]
-    (concat pad zs pad)))
-
-
 (defn frozen-lake-example []
   (let [network frozen-lake-network
         optimizer (sgd :learning-rate 0.2 :momentum 0.0)
