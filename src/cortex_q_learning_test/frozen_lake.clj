@@ -63,9 +63,8 @@
               {:keys [network optimizer]} (execute/train nn
                                                          train-ds
                                                          :batch-size 1
-                                                         ;:context context
+                                                         :context context
                                                          :optimizer opt)]
-          (when goal? (prn reward step))
           (recur observation
                  done?
                  goal?
