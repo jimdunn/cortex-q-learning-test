@@ -99,7 +99,6 @@
           (let [epsilon (/ 1.0 (+ 10.0 (/ (inc episode) 50.0)))
                 {:keys [steps nnet optimizer goal? rewards]} (frozen-lake-episode
                                                               id nn context opt epsilon)]
-            (when goal? (println episode steps rewards))
             (recur nnet
                    optimizer
                    (inc episode)
